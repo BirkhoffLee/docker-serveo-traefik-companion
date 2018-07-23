@@ -12,7 +12,7 @@ $ ./generate-ssh-key.sh
 
 In the meanwhile, go to `docker-compose.yml` and change your Traefik labels and stuff. The default SSH port is *1234* which obviously you will need to change. Remember to pass any traffic on that port through your firewall.
 
-When you're done, simply run the following.
+When you're done, make sure Traefik's running, and simply run the following.
 
 ```
 $ docker-compose up -d
@@ -34,7 +34,7 @@ $ ssh -R YOUR_DOMAIN:80:localhost:3000 SERVER_IP_ADDR -p 1234 -i ./ssh_key
 
 If something went wrong, add `-v` to enable SSH's verbose output.
 
-Open your browser. Navigate to your domain. If everything's fine, you should see something like this:
+Open your browser. Navigate to your domain. If everything's fine, the page's served under HTTPS, thanks to Traefik, and you should see something like this:
 
 ```
 serveo_1  | 2018/07/23 02:09:19 Handshaking with 8.8.8.8
