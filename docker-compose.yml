@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  serveo:
+    build:
+      context: .
+    restart: unless-stopped
+    networks:
+      - traefik
+      - default
+    expose:
+      - "80"
+    ports:
+      - "1234:22"
+    labels:
+      - "traefik.docker.network=traefik"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:wohoo.birkhoff.me"
+      - "traefik.port=80"
+      - "traefik.protocol=http"
+    volumes:
+      - ./ssh_key:/app/ssh_key:ro
+
+networks:
+  traefik:
+    external: true
