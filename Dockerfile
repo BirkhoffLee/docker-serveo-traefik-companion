@@ -6,4 +6,4 @@ RUN chmod +x /app/serveo
 
 EXPOSE 22 80
 
-CMD [ "/app/serveo", "-private_key_path=/app/ssh_key", "-port=22", "-http_port=80" ]
+CMD [ "/app/serveo", "-private_key_path=/app/ssh_key", "-port=22", "-http_port=80", "-disable_telemetry" ]
